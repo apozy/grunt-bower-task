@@ -43,6 +43,12 @@ grunt.initConfig({
 
 ### Options
 
+#### options.cwd
+Type: `String`
+Default value: (path where grunt is executed from)
+
+The directory where bower will be run from. 
+
 #### options.targetDir
 Type: `String`
 Default value: `./lib`
