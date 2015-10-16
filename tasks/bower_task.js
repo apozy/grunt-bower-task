@@ -43,6 +43,11 @@ module.exports = function (grunt) {
         callback();
     }
 
+    function chdir(dir, callback) {
+        process.chdir(dir);
+        callback();
+    }
+
     function install(options, callback) {
         bower.commands.install([], options.bowerOptions)
             .on('log', function (result) {
@@ -132,8 +137,13 @@ module.exports = function (grunt) {
         if (options.cleanBowerDir) {
             add('Cleaned bower dir ' + bowerDir.grey, function (callback) {
                 clean(bowerDir, callback);
-                process.chdir(cwd);
             });
+        }
+        
+        if (options.cwd) {
+          add('Reset working dir ' + bowerDir.grey, function (callback) {
+              chdir(cwd, callback);
+          });
         }
 
         async.series(tasks, done);
