@@ -141,7 +141,7 @@ module.exports = function (grunt) {
         }
         
         if (options.cwd) {
-          add('Reset working dir ' + bowerDir.grey, function (callback) {
+          add('Reset working dir ' + cwd.grey, function (callback) {
               chdir(cwd, callback);
           });
         }
